@@ -1,0 +1,34 @@
+alltransactio
+<h2 style="margin-left: 40%;">Transaction Details</h2>
+<div class="alldata">
+    <div class="container">
+        <table class="table" >
+            <thead class="thead-dark">
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Account</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Balance</th>
+                    
+                </tr>
+        
+            </thead>
+            <tbody *ngFor="let transaction of transactions">
+                <tr>
+                    <th scope="row">{{transaction.transactionId}}</th>
+                    <td>{{transaction.account}}</td>
+                    <td>{{transaction.description}}</td>
+                    <td>{{transaction.amount}}</td>
+                    <td>{{transaction. transactionTime}}</td>
+                    <td>{{transaction.balance}}</td>
+                   
+                   
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    
+</div>

@@ -1,0 +1,57 @@
+<h1 style="margin-left: 42%;">Find Transaction</h1>
+<div class="container">
+    <form #searchTransactionForm="ngForm" (ngSubmit)="getTransaction(searchTransactionForm)">
+        <div class="form-group">
+            <label>Account Number</label>
+            <input type="text" #account="ngModel" class="form-control" pattern="^\d+$" name="account" placeholder="Enter the Account number" required maxlength="1" ngModel>
+        </div>
+        <div *ngIf="account.invalid && (account.dirty || account.touched)" class="alert alert-danger">
+            <div *ngIf="account.errors.required">
+                Account Number is required.
+            </div>
+
+            <div *ngIf="account.errors.pattern">
+                Transaction Id should be numeric.
+            </div>
+        </div>
+       <button [disabled]="searchTransactionForm.form.invalid" class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+
+<div class="alldata">
+    <div class="container" *ngIf="show">
+        <h2 style="margin-left: 40%;">Transaction List</h2>
+        <table class="table" >
+            <thead class="thead-dark">
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Account</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Balance</th>
+                    
+                </tr>
+        
+            </thead>
+            <tbody *ngFor="let transaction of transactions">
+                <tr>
+                    <th scope="row">{{transaction.transactionId}}</th>
+                    <td>{{transaction.account}}</td>
+                    <td>{{transaction.description}}</td>
+                    <td>{{transaction.amount}}</td>
+                    <td>{{transaction. transactionTime}}</td>
+                    <td>{{transaction.balance}}</td>
+                   
+                   
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container" *ngIf="errorShow">
+        <h4 style="color: red;">No such Account exists </h4>
+    </div>
+    
+    
+</div>
+

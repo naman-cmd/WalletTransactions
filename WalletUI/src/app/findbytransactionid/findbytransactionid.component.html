@@ -1,0 +1,46 @@
+<h1 style="margin-left: 42%;">Find Transaction</h1>
+<div class="container">
+    <form #searchTransactionForm="ngForm" (ngSubmit)="getTransaction(searchTransactionForm)">
+        <div class="form-group">
+            <label>Transaction Id</label>
+            <input type="text" #transactionId="ngModel" class="form-control" pattern="^\d+$" name="transactionId" placeholder="Enter the Transaction Id" required maxlength="1" ngModel>
+        </div>
+        <div *ngIf="transactionId.invalid && (transactionId.dirty || transactionId.touched)" class="alert alert-danger">
+            <div *ngIf="transactionId.errors.required">
+                Transaction Id is required.
+            </div>
+
+            <div *ngIf="transactionId.errors.pattern">
+                Transaction Id should be numeric.
+            </div>
+        </div>
+       <button [disabled]="searchTransactionForm.form.invalid" class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+<div class="container" *ngIf="show">
+    <h2 style="margin-left: 40%;"> Transaction Details</h2>
+    <table class="table">
+        <tr>
+            <th scope="row">Transaction Id</th><td>{{transaction.transactionId}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Account</th><td>{{transaction.account}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Description</th><td>{{transaction.description}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Amount</th><td>{{transaction.amount}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Transaction Date</th><td>{{transaction.transactionTime}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Balance</th><td>{{transaction.balance}}</td>
+        </tr>
+       
+    </table>
+   </div>
+   <div class="container" *ngIf="errorShow">
+    <h4 style="color: red;">No such Transaction Id exists </h4>
+</div>
