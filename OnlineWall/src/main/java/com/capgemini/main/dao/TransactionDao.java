@@ -10,5 +10,5 @@ import com.capgemini.main.entity.WalletTransactions;
 public interface TransactionDao extends JpaRepository<WalletTransactions,Long> {
 
 	List <WalletTransactions> findByAccount(int account);
-
+	
 }

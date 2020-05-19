@@ -6,8 +6,25 @@ public class TransactionDto {
 	private long transactionId;
 	private int account;
 	private String description;
-	private LocalDateTime transactionTime;
+	
 	private double amount;
+	private LocalDateTime transactionTime;
+	public int getAccount() {
+		return account;
+	}
+	public void setAccount(int account) {
+		this.account = account;
+	}
+	public TransactionDto(long transactionId, int account, String description, double amount,
+			LocalDateTime transactionTime, double balance) {
+		super();
+		this.transactionId = transactionId;
+		this.account = account;
+		this.description = description;
+		this.amount = amount;
+		this.transactionTime = transactionTime;
+		this.balance = balance;
+	}
 	private double balance;
 	public long getTransactionId() {
 		return transactionId;

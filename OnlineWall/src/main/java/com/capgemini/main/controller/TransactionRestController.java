@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +38,8 @@ public class TransactionRestController {
     private TransactionServices service;
 
    @PostMapping("/add")
-    public ResponseEntity<WalletTransactions>createTransaction(@RequestBody @Valid TransactionDto dto){
+    public ResponseEntity<WalletTransactions>createTransaction(@RequestBody  TransactionDto dto){
+	  
 	   WalletTransactions transaction=convertFromDto(dto);
         transaction=service.save(transaction);
         ResponseEntity<WalletTransactions>response=new ResponseEntity<>(transaction, HttpStatus.OK);
@@ -48,7 +50,8 @@ public class TransactionRestController {
 	   WalletTransactions transaction=new WalletTransactions();
        transaction.setTransactionId(dto.getTransactionId());
        transaction.setDescription(dto.getDescription());
-       transaction.setTransactionTime(dto.getTransactionTime());
+       transaction.setTransactionTime(java.time.LocalDateTime.now());
+       transaction.setAccount(dto.getAccount());
        transaction.setAmount(dto.getAmount());
        transaction.setBalance(dto.getBalance());
        
@@ -63,7 +66,7 @@ public class TransactionRestController {
    }
    
    @GetMapping("/getbyaccount/{account}")
-   public ResponseEntity<List<WalletTransactions>>findTransactionByAccount( @PathVariable("account") @Min(1)  int account){
+   public ResponseEntity<List<WalletTransactions>>findTransactionByAccount( @PathVariable("account") @Min(1)   int account){
 	   List<WalletTransactions> transactions= service.findByAccount(account);
       ResponseEntity<List<WalletTransactions>>response=new ResponseEntity<>(transactions,HttpStatus.OK);
       return response;
