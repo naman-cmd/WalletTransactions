@@ -38,5 +38,10 @@ export class TransactionserviceService {
   let observable:Observable<Transaction[]> = this.client.get<Transaction[]>(url);
   return observable;
 }
+getAllTransactionsByRecieverId(recieverId:number):Observable<Transaction[]>{
+  let url=this. baseTransactionUrl+"/getbyreciever/"+recieverId;
+  let observable:Observable<Transaction[]> = this.client.get<Transaction[]>(url);
+  return observable;
+}
 
 }

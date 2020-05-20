@@ -3,7 +3,7 @@
     <form #searchTransactionForm="ngForm" (ngSubmit)="getTransaction(searchTransactionForm)">
         <div class="form-group">
             <label>Transaction Id</label>
-            <input type="text" #transactionId="ngModel" class="form-control" pattern="^\d+$" name="transactionId" placeholder="Enter the Transaction Id" required maxlength="1" ngModel>
+            <input type="text" #transactionId="ngModel" class="form-control" pattern="^\d+$" name="transactionId" placeholder="Enter the Transaction Id" required maxlength="10" ngModel>
         </div>
         <div *ngIf="transactionId.invalid && (transactionId.dirty || transactionId.touched)" class="alert alert-danger">
             <div *ngIf="transactionId.errors.required">

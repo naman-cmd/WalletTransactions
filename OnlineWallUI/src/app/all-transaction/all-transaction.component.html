@@ -9,6 +9,7 @@ alltransactio
                     <th>Account</th>
                     <th>Description</th>
                     <th>Amount</th>
+                    <th>RecieverId</th>
                     <th>Date</th>
                     <th>Balance</th>
                     
@@ -21,7 +22,8 @@ alltransactio
                     <td>{{transaction.account}}</td>
                     <td>{{transaction.description}}</td>
                     <td>{{transaction.amount}}</td>
-                    <td>{{transaction. transactionTime}}</td>
+                    <td>{{transaction.recieverId}}</td>
+                    <td>{{transaction. transactionTime | date:'medium'}}</td>
                     <td>{{transaction.balance}}</td>
                    
                    

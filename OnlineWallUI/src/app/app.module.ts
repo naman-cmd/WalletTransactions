@@ -9,6 +9,7 @@ import { FindbytransactionidComponent } from './findbytransactionid/findbytransa
 import { TransactionserviceService } from './services/transactionservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FindByAccountComponent } from './find-by-account/find-by-account.component';
+import { FindByRecieverComponent } from './find-by-reciever/find-by-reciever.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FindByAccountComponent } from './find-by-account/find-by-account.compon
     AllTransactionComponent,
     FindbytransactionidComponent,
     FindByAccountComponent,
+    FindByRecieverComponent,
     
   ],
   imports: [

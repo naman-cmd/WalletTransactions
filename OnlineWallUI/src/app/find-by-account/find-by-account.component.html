@@ -3,7 +3,7 @@
     <form #searchTransactionForm="ngForm" (ngSubmit)="getTransaction(searchTransactionForm)">
         <div class="form-group">
             <label>Account Number</label>
-            <input type="text" #account="ngModel" class="form-control" pattern="^\d+$" name="account" placeholder="Enter the Account number" required maxlength="1" ngModel>
+            <input type="text" #account="ngModel" class="form-control" pattern="^\d+$" name="account" placeholder="Enter the Account number" required maxlength="1" [(ngModel)]="accId">
         </div>
         <div *ngIf="account.invalid && (account.dirty || account.touched)" class="alert alert-danger">
             <div *ngIf="account.errors.required">
@@ -28,6 +28,7 @@
                     <th>Account</th>
                     <th>Description</th>
                     <th>Amount</th>
+                    <th>Reciever</th>
                     <th>Date</th>
                     <th>Balance</th>
                     
@@ -36,11 +37,12 @@
             </thead>
             <tbody *ngFor="let transaction of transactions">
                 <tr>
-                    <th scope="row">{{transaction.transactionId}}</th>
+                    <th>{{transaction.transactionId}}</th>
                     <td>{{transaction.account}}</td>
                     <td>{{transaction.description}}</td>
                     <td>{{transaction.amount}}</td>
-                    <td>{{transaction. transactionTime}}</td>
+                    <td>{{transaction.recieverId}}</td>
+                    <td>{{transaction. transactionTime | date:'medium'}}</td>
                     <td>{{transaction.balance}}</td>
                    
                    
