@@ -79,4 +79,22 @@ public class TransactionServiceImpl implements TransactionServices {
 
 
 	}
+	@Override
+	public List <WalletTransactions> findByRecieverId(int recieverId) {
+		
+		
+
+	       List <WalletTransactions> transactions =transactionDao.findByRecieverId(recieverId);
+	       
+	       if(!transactions.isEmpty())
+	       {
+	    	   return transactions ;
+	       }
+	       else
+	       {
+		     throw new AccountNotFoundException("Account not found for account="+recieverId);
+	       }
+
+
+	}
 	}

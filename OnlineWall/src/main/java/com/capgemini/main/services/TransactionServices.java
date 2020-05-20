@@ -11,6 +11,7 @@ public interface TransactionServices {
     WalletTransactions findById(long id);
     List<WalletTransactions> fetchAll();
     List<WalletTransactions> findByAccount(int id);
+    List<WalletTransactions> findByRecieverId(int recieverId);
 
 
 }

@@ -26,6 +26,13 @@ public class TransactionDto {
 		this.balance = balance;
 	}
 	private double balance;
+	private int recieverId;
+	public int getRecieverId() {
+		return recieverId;
+	}
+	public void setRecieverId(int recieverId) {
+		this.recieverId = recieverId;
+	}
 	public long getTransactionId() {
 		return transactionId;
 	}

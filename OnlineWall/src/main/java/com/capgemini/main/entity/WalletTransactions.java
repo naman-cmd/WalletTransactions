@@ -21,7 +21,15 @@ public class WalletTransactions {
 	private double amount;
 	private LocalDateTime transactionTime;
 	
+	
 	private double balance;
+	private int recieverId;
+	public int getRecieverId() {
+		return recieverId;
+	}
+	public void setRecieverId(int recieverId) {
+		this.recieverId = recieverId;
+	}
 	public long getTransactionId() {
 		return transactionId;
 	}

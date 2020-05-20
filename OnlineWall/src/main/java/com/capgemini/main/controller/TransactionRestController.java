@@ -54,7 +54,7 @@ public class TransactionRestController {
        transaction.setAccount(dto.getAccount());
        transaction.setAmount(dto.getAmount());
        transaction.setBalance(dto.getBalance());
-       
+       transaction.setRecieverId(dto.getRecieverId());
        return transaction;
    }
 
@@ -69,6 +69,13 @@ public class TransactionRestController {
    public ResponseEntity<List<WalletTransactions>>findTransactionByAccount( @PathVariable("account") @Min(1)   int account){
 	   List<WalletTransactions> transactions= service.findByAccount(account);
       ResponseEntity<List<WalletTransactions>>response=new ResponseEntity<>(transactions,HttpStatus.OK);
+      return response;
+   }
+   @GetMapping("/getbyreciever/{recieverId}")
+   public ResponseEntity<List<WalletTransactions>>findTransactionByRecieverId( @PathVariable("recieverId") @Min(1)   int recieverId){
+	   List<WalletTransactions> transactions= service.findByRecieverId(recieverId);
+	   
+	   ResponseEntity<List<WalletTransactions>>response=new ResponseEntity<>(transactions,HttpStatus.OK);
       return response;
    }
    
